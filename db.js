@@ -42,9 +42,6 @@ sequelize.sync()
   .catch(error => {
     console.error('Error creating user:', error);
   })
-  .finally(() => {
-    // Close the Sequelize connection (optional)
-    sequelize.close();
-  });
 
-  module.exports = {User}
+
+  // module.exports = {User}

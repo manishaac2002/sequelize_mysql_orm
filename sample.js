@@ -1,10 +1,4 @@
-const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
-
-const app = express();
-const port = 3000;
-
-app.use(express.json())
 
 const sequelize = new Sequelize({
   dialect: 'mysql',
@@ -30,23 +24,12 @@ const User = sequelize.define('User', {
   },
 });
 
-app.post('/users', async (req, res) => {
-  try {
-    const { firstName, lastName, email } = req.body;
-    const newUser = await User.create({ firstName, lastName, email });
-    res.json(newUser);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
-
 sequelize.sync()
   .then(() => {
-    app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
-    });
+    console.log("Syncing database successfully");
   })
   .catch(error => {
     console.error('Error syncing database:', error);
   });
+
+  module.exports ={User}
