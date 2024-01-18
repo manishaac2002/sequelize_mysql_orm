@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+import { Sequelize, DataTypes } from 'sequelize';
 
 const sequelize = new Sequelize({
   dialect: 'mysql',
@@ -23,6 +23,27 @@ const User = sequelize.define('User', {
     unique: true,
   },
 });
+const Address = sequelize.define('Address', {
+  street: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  state: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  zipCode: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+},{ tableName: 'addresses' });
+// Define a foreign key relationship between User and Address
+User.hasOne(Address);
+Address.belongsTo(User);
 
 sequelize.sync()
   .then(() => {
@@ -32,4 +53,5 @@ sequelize.sync()
     console.error('Error syncing database:', error);
   });
 
-module.exports = { User }
+
+export default { User, Address }
