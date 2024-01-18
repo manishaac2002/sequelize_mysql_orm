@@ -11,6 +11,6 @@ application.post('/createClientDetails',createNewClientDetailsController )
 
 
 const port = 2001
-app.listen(port, () => {
+application.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });

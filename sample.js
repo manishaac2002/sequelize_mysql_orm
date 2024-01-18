@@ -32,4 +32,4 @@ sequelize.sync()
     console.error('Error syncing database:', error);
   });
 
-  module.exports ={User}
+module.exports = { User }
