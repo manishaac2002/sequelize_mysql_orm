@@ -1,7 +1,7 @@
 // Import the Sequelize and DataTypes modules
 import {  Sequelize, DataTypes } from "sequelize"
 
-// Create a Sequelize instance
+// Create a Sequelize instance 
 const sequelize = new Sequelize({
   dialect: 'mysql',
   host: '103.127.146.144',
