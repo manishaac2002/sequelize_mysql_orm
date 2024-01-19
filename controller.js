@@ -1,6 +1,6 @@
 import dbTable from './models/db.js'
 const createNewUserDetailsController = async(request, response) => {
-  const {user_name, user_email,user_phone} =request.body
+  const {user_name} =request.body
   const newUser =await dbTable.User.create({
     user_name ,
   })
@@ -9,9 +9,9 @@ const createNewUserDetailsController = async(request, response) => {
 }
 
 const createNewUserDetailsController1 = async(request, response) => {
-  const {user_email,user_phone} =request.body
+  const {user_email,user_id} =request.body
   const newUser =await dbTable.UserDetail.create({
-   user_email,user_phone
+   user_email,user_id
   })
   response.json(newUser)
 }

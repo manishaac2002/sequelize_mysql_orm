@@ -24,7 +24,7 @@ const User = sequelize.define('users', {
 });
 
 // Define the UserDetail model
-const UserDetail = sequelize.define('users_detail', {
+const UserDetail = sequelize.define('users_details', {
   user_email: {
     type: DataTypes.STRING(250),
     allowNull: false,
