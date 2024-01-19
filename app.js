@@ -5,8 +5,9 @@ const application = express()
 application.use(express.json())
 
 // APIs
-application.get('/getClientDetails',controller.getClientDetailsController )
-application.post('/createClientDetails',controller.createNewClientDetailsController )
+// application.get()
+application.post('/createNewUserDetails',controller.createNewUserDetailsController)
+application.post('/createNewUserDetails1',controller.createNewUserDetailsController1)
 
 const port = 2001
 application.listen(port, () => {

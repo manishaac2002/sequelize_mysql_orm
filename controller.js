@@ -1,40 +1,22 @@
-import dbTable from "./sample.js"
-
-const getClientDetailsController = (request, response) => {
-  response.send('Getting client details')
+import dbTable from './models/db.js'
+const createNewUserDetailsController = async(request, response) => {
+  const {user_name, user_email,user_phone} =request.body
+  const newUser =await dbTable.User.create({
+    user_name ,
+  })
+  response.json(newUser)
+  console.log(request.body);
 }
-const createNewClientDetailsController = async (request, response) => {
-  try {
 
-    const { firstName, lastName, email, address}= request.body;
-    const newUser = await dbTable.User.create({ 
-      firstName, 
-      lastName, 
-      email,
-      address: {
-        street:address.street,
-        city:address.city,
-        state:address.state,
-        zipCode:address.zipCode,
-      },
-    },
-    {
-      include: dbTable.Address,
-    }
-    );
-    response.json(newUser);
-    console.log(address);
-  } catch (error) {
-
-    console.error(error);
-    response.status(500).json({ error: 'Internal Server Error' });
-  }
+const createNewUserDetailsController1 = async(request, response) => {
+  const {user_email,user_phone} =request.body
+  const newUser =await dbTable.UserDetail.create({
+   user_email,user_phone
+  })
+  response.json(newUser)
 }
-const testingRouterController =()=>{
 
+export default {
+  createNewUserDetailsController,
+  createNewUserDetailsController1
 }
-export default  {
-  getClientDetailsController,
-  createNewClientDetailsController,
-  testingRouterController
-} 
