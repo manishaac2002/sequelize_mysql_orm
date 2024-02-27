@@ -30,9 +30,7 @@ const createNewClientDetailsController = async (request, response) => {
     response.status(500).json({ error: 'Internal Server Error' });
   }
 }
-const testingRouterController =()=>{
 
-}
 export default  {
   getClientDetailsController,
   createNewClientDetailsController,
