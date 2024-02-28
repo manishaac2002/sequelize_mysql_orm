@@ -34,5 +34,4 @@ const createNewClientDetailsController = async (request, response) => {
 export default  {
   getClientDetailsController,
   createNewClientDetailsController,
-  testingRouterController
 } 
