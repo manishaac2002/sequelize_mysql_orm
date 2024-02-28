@@ -19,11 +19,10 @@ const createNewClientDetailsController = async (request, response) => {
       },
     },
     {
-      include: dbTable.Address,
+      include: dbTable.Address,//using include property we join the table
     }
     );
-    response.json(newUser);
-    console.log(address);
+
   } catch (error) {
 
     console.error(error);

@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
+//configuration in sequelize
 const sequelize = new Sequelize({
   dialect: 'mysql',
   host: '103.127.146.144',
@@ -8,6 +9,8 @@ const sequelize = new Sequelize({
   database: 'orm_v3',
 });
 
+//model for each table for particular database in sequelize orm
+//user table model
 const User = sequelize.define('User', {
   firstName: {
     type: DataTypes.STRING,
@@ -23,6 +26,8 @@ const User = sequelize.define('User', {
     unique: true,
   },
 });
+
+//address model
 const Address = sequelize.define('Address', {
   street: {
     type: DataTypes.STRING,
@@ -41,10 +46,13 @@ const Address = sequelize.define('Address', {
     allowNull: false,
   },
 },{ tableName: 'addresses' });
+
 // Define a foreign key relationship between User and Address
 User.hasOne(Address);
 Address.belongsTo(User);
 
+
+//sync the sequelize model
 sequelize.sync()
   .then(() => {
     console.log("Syncing database successfully");
