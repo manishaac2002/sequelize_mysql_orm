@@ -5,7 +5,7 @@ const application = express()
 application.use(express.json())
 
 // APIs
-// application.get()
+
 application.post('/createNewUserDetails',controller.createNewUserDetailsController)
 application.post('/createNewUserDetails1',controller.createNewUserDetailsController1)
 
