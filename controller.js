@@ -1,36 +1,22 @@
-import dbTable from "./sample.js"
-
-const getClientDetailsController = (request, response) => {
-  response.send('Getting client details')
-}
-const createNewClientDetailsController = async (request, response) => {
-  try {
-
-    const { firstName, lastName, email, address}= request.body;
-    const newUser = await dbTable.User.create({ 
-      firstName, 
-      lastName, 
-      email,
-      address: {
-        street:address.street,
-        city:address.city,
-        state:address.state,
-        zipCode:address.zipCode,
-      },
-    },
-    {
-      include: dbTable.Address,//using include property we join the table
-    }
-    );
-
-  } catch (error) {
-
-    console.error(error);
-    response.status(500).json({ error: 'Internal Server Error' });
-  }
+import dbTable from './models/db.js'
+const createNewUserDetailsController = async(request, response) => {
+  const {user_name,user_email,user_id} =request.body
+  const newUser =await dbTable.User.create({
+    user_name ,
+  })
+  const newUserDetail =await dbTable.UserDetail.create({
+   user_email,user_id
+  })
+  response.json(newUser && newUserDetail )
+  console.log(request.body);
 }
 
-export default  {
-  getClientDetailsController,
-  createNewClientDetailsController,
-} 
+const createNewUserDetailsController1 = async(request, response) => {
+
+  response.json(newUser)
+}
+
+export default {
+  createNewUserDetailsController,
+  createNewUserDetailsController1
+}
